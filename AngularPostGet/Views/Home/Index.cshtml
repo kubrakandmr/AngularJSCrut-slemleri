@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<html ng-app="myApp">
+<head>
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="../Scripts/angular.js"></script>
+    <script src="../Scripts/Module.js"></script>
+    <script src="../Scripts/Service.js"></script>
+    <script src="../Scripts/EmpController.js"></script>
+
+
+</head>
+
+
+<body>
+
+    <div data-ng-controller="myController" ng-init="GetAllEmp()">
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in employee">
+                        <td>{{item.FirstName}}</td>
+                        <td>{{item.LastName}}</td>
+
+                        <td>
+                            <span ng-click="editEmployee(item)" class="btn btn-default">Edit</span>
+                            <span ng-click="Deletet(item)" class="btn btn-default">Delete</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <input type="button" class="btn btn-success" value="Employee Ekle" ng-click="Divac()" />
+            <br />
+
+        </div>
+       
+
+        <div ng-show="divEmployee">
+            <table>
+                <tr>
+                    <td>ID</td>
+                    <td>
+                        @*disabled="disabled" id değiştirilemez olsun diye*@
+                        <input type="text" disabled="disabled" ng-model="employeeId" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>AD</td>
+                    <td>
+                        <input type="text" ng-model="employeeName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>SOYAD</td>
+                    <td>
+                        <input type="text" ng-model="employeeLastName" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <input type="button" class="btn btn-success" value="Kaydet" ng-click="AddUpdateEmployee()" />
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+
+
+  
+</body>
+
+
+
+</html>
